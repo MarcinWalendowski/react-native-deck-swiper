@@ -391,8 +391,8 @@ class Swiper extends React.Component {
 	setCardIndex = (newCardIndex, swipedAllCards) => {
 		this.setState(
 			{
-				firstCardIndex: newCardIndex,
-				secondCardIndex: this.calculateSecondCardIndex(newCardIndex),
+				firstCardIndex: 0,
+				secondCardIndex: 1,
 				previousCardIndex: this.calculatePreviousCardIndex(newCardIndex),
 				swipedAllCards: swipedAllCards,
 				panResponderLocked: false
@@ -562,8 +562,8 @@ class Swiper extends React.Component {
 
 	render() {
 		return (
-            <View
-                style={[
+			<View
+				style={[
 					styles.container,
 					{
 						backgroundColor: this.props.backgroundColor,
@@ -571,12 +571,12 @@ class Swiper extends React.Component {
 						marginBottom: this.props.marginBottom
 					}
 				]}
-            >
+			>
 				{this.renderChildren()}
 				{this.renderFirstCard()}
 				{this.renderSecondCard()}
 				{this.renderSwipeBackCard()}
-            </View>
+			</View>
 		);
 	}
 
@@ -589,9 +589,9 @@ class Swiper extends React.Component {
 		}
 
 		return (
-            <View style={[styles.childrenViewStyle, { zIndex: zIndex }]}>
+			<View style={[styles.childrenViewStyle, { zIndex: zIndex }]}>
 				{children}
-            </View>
+			</View>
 		);
 	}
 
@@ -610,13 +610,13 @@ class Swiper extends React.Component {
 		}
 
 		return (
-            <Animated.View
-                style={swipableCardStyle}
+			<Animated.View
+				style={swipableCardStyle}
 				{...this._panResponder.panHandlers}
-            >
+			>
 				{renderOverlayLabel}
 				{firstCard}
-            </Animated.View>
+			</Animated.View>
 		);
 	};
 
@@ -636,9 +636,9 @@ class Swiper extends React.Component {
 		}
 
 		return (
-            <Animated.View style={secondCardZoomStyle}>
+			<Animated.View style={secondCardZoomStyle}>
 				{showSecondCard ? secondCard : null}
-            </Animated.View>
+			</Animated.View>
 		);
 	};
 
@@ -649,9 +649,9 @@ class Swiper extends React.Component {
 		const previousCardStyle = this.calculateSwipeBackCardStyle();
 		const previousCard = this.props.renderCard(previousCardContent);
 		return (
-            <Animated.View style={previousCardStyle}>
+			<Animated.View style={previousCardStyle}>
 				{previousCard}
-            </Animated.View>
+			</Animated.View>
 		);
 	};
 
@@ -680,11 +680,11 @@ class Swiper extends React.Component {
 		}
 
 		return (
-            <Animated.View style={this.calculateOverlayLabelWrapperStyle()}>
-              <Text style={this.calculateOverlayLabelStyle()}>
-				  {overlayLabels[labelType].title}
-              </Text>
-            </Animated.View>
+			<Animated.View style={this.calculateOverlayLabelWrapperStyle()}>
+				<Text style={this.calculateOverlayLabelStyle()}>
+					{overlayLabels[labelType].title}
+				</Text>
+			</Animated.View>
 		);
 	}
 }
